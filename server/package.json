@@ -1,7 +1,8 @@
 {
   "author": "",
   "dependencies": {
-    "ws": "^8.14.2"
+    "express": "^4.18.2",
+    "socket.io": "^4.7.2"
   },
   "description": "",
   "keywords": [],
@@ -11,5 +12,6 @@
   "scripts": {
     "dev": "node --watch index.js"
   },
+  "type": "module",
   "version": "1.0.0"
 }
