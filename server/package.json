@@ -8,7 +8,7 @@
   "keywords": [],
   "license": "ISC",
   "main": "index.js",
-  "name": "web-sockers-1",
+  "name": "web-sockers",
   "scripts": {
     "dev": "node --watch index.js"
   },

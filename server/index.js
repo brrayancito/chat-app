@@ -1,12 +1,24 @@
-import { createServer } from "node:http";
-import { Server} from "socket.io";
+import express from "express";
+import { Server } from "socket.io";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
-const server = new createServer();
+const app = express();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+app.use(express.static(path.join(__dirname, "public")));
+
+const PORT = process.env.PORT || 8080;
+
+const server = app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}...`);
+});
 const io = new Server(server, {
     cors: {
         origin: process.env.NODE_ENV === "production" 
             ? false 
-            : ["http://localhost:5500", "http://127.0.0.1:5500"]
+            : ["http://localhost:8080", "http://127.0.0.1:8080"]
     }
 });
 
@@ -19,8 +31,3 @@ io.on('connection', socket => {
         io.emit('message', `${socket.id} said: ${data}`);
     })
 });
-
-const PORT = process.env.PORT ?? 8080;
-server.listen(PORT, () => {
-    console.log(`Server is running on http://localhost${PORT}...`)
-})
