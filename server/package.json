@@ -5,12 +5,15 @@
     "socket.io": "^4.7.2"
   },
   "description": "",
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
   "keywords": [],
   "license": "ISC",
   "main": "index.js",
   "name": "web-sockers",
   "scripts": {
-    "dev": "node --watch index.js"
+    "dev": "nodemon index.js"
   },
   "type": "module",
   "version": "1.0.0"
